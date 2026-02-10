@@ -1,62 +1,60 @@
-import { css, cx } from "../../../styled-system/css";
-import { Button } from "../atoms/Button";
-import { Heading } from "../atoms/Typography";
+"use client";
+
+import { css } from "../../../styled-system/css";
+import { Code } from "../atoms/Typography";
 
 export const Navigation = () => {
     const navStyles = css({
-        width: "100%",
-        height: "10vh",
-        maxHeight: "80px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        paddingX: "grandeur",
-        borderBottom: "1px solid",
-        borderColor: "rgba(255, 255, 255, 0.05)",
-        backdropFilter: "blur(10px)",
-        position: "sticky",
+        position: "fixed",
         top: 0,
-        zIndex: 100,
-        bg: "rgba(18, 18, 18, 0.8)",
+        width: "100%",
+        zIndex: 40,
+        paddingX: "sectional",
+        paddingY: "component",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        mixBlendMode: "difference",
+        opacity: 0,
+        animation: "fadeIn 2s 1s forwards",
     });
 
     const logoStyles = css({
-        fontSize: "lg",
-        color: "accent",
+        fontFamily: "var(--font-michroma)",
+        fontSize: "xs",
         letterSpacing: "0.2em",
+        color: "white",
+        opacity: 0.7,
     });
 
     const linksStyles = css({
-        display: { base: "none", md: "flex" },
-        gap: "atmospheric",
-        alignItems: "center",
+        display: "flex",
+        gap: "sectional",
+        fontFamily: "var(--font-jetbrains)",
+        fontSize: "10px",
+        letterSpacing: "widest",
+        color: "#AAA",
     });
 
-    const linkItemStyles = css({
-        fontSize: "xs",
-        color: "text.secondary",
-        textTransform: "uppercase",
-        letterSpacing: "widest",
+    const linkStyles = css({
+        transition: "color 0.2s ease-in-out",
         cursor: "pointer",
-        transition: "color 0.2s",
-        _hover: { color: "accent" },
+        _hover: {
+            color: "accent",
+        }
     });
 
     return (
-        <nav className={navStyles}>
+        <nav className={navStyles} style={{ viewTransitionName: "main-nav" }}>
             <div className={logoStyles}>
-                <Heading as="h2" className={css({ fontSize: "lg", m: 0 })}>GOLDEN ENGINE</Heading>
+                ECLIPSE LOGIC <span className={css({ color: "accent" })}>//</span> V.9.0
             </div>
-
             <div className={linksStyles}>
-                <span className={linkItemStyles}>Solutions</span>
-                <span className={linkItemStyles}>Performance</span>
-                <span className={linkItemStyles}>Security</span>
-                <span className={linkItemStyles}>ROI</span>
-            </div>
-
-            <div>
-                <Button variant="primary" size="sm">Get Audited</Button>
+                <a href="#home" className={linkStyles}>GATEWAY</a>
+                <a href="#capabilities" className={linkStyles}>CAPABILITIES</a>
+                <a href="#protocol" className={linkStyles}>PROTOCOL</a>
+                <a href="#manifesto" className={linkStyles}>MANIFESTO</a>
+                <a href="#contact" className={linkStyles}>SECURE_LINK</a>
             </div>
         </nav>
     );

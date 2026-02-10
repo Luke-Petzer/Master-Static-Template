@@ -1,20 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Michroma, JetBrains_Mono, Rajdhani } from "next/font/google";
 import "./globals.css";
+import "./node-dots.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const michroma = Michroma({
+  weight: "400",
+  variable: "--font-michroma",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["300", "400", "500"],
+  variable: "--font-jetbrains",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const rajdhani = Rajdhani({
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-rajdhani",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Golden Engine | B2B Industrial Mastery",
-  description: "High-performance industrial-grade Next.js 16 boilerplate.",
+  title: "Eclipse Logic | Digital Erasure",
+  description: "In a world that never forgets, we help you stay in the shadows.",
 };
 
 export default function RootLayout({
@@ -23,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+    <html lang="en" className={`scroll-smooth ${michroma.variable} ${jetbrainsMono.variable} ${rajdhani.variable}`}>
       <body>
         {children}
       </body>

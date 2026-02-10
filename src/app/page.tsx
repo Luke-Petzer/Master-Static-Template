@@ -1,39 +1,43 @@
-import { Suspense } from "react";
 import { Navigation } from "../components/organisms/Navigation";
-import { Hero } from "../components/organisms/Hero";
-import { ServiceGrid } from "../components/organisms/ServiceGrid";
-import { ROICalculator } from "../components/organisms/ROICalculator";
-import { PerformanceMetrics } from "../components/organisms/PerformanceMetrics";
-import { Footer } from "../components/organisms/Footer";
+import { EclipseHero } from "../components/organisms/EclipseHero";
+import { CapabilitiesGrid } from "../components/organisms/CapabilitiesGrid";
+import { ProtocolSection } from "../components/organisms/ProtocolSection";
+import { ManifestoSection } from "../components/organisms/ManifestoSection";
+import { ContactSection } from "../components/organisms/ContactSection";
+import { DataNodesBackground } from "../components/organisms/DataNodesBackground";
+import { MorphingDot } from "../components/organisms/MorphingDot";
 import { css } from "../../styled-system/css";
 
 export default function Home() {
   return (
-    <div className={css({ bg: "bg", minHeight: "100vh" })}>
-      {/* Static Shell Components */}
+    <div className={css({
+      minHeight: "100vh",
+      bg: "radial-gradient(circle at center, #0d0d0d 0%, #000000 100%)",
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      overflow: "hidden",
+    })}>
+      {/* Global scanlines overlay is added via globals.css body::before */}
+
+      {/* Background Data Nodes */}
+      <DataNodesBackground />
+
+      {/* Navigation */}
       <Navigation />
 
-      <main>
-        <Hero />
+      {/* Morphing Dot/Line Artifact */}
+      <MorphingDot />
 
-        <ServiceGrid />
-
-        {/* Dynamic / Streaming Layer (PPR) */}
-        <section className={css({ paddingX: "grandeur" })}>
-          <Suspense fallback={<div className={css({
-            height: "100px",
-            width: "100%",
-            bg: "rgba(255,255,255,0.02)",
-            opacity: 0.5
-          })} />}>
-            <PerformanceMetrics />
-          </Suspense>
-        </section>
-
-        <ROICalculator />
+      {/* Main Content */}
+      <main style={{ viewTransitionName: "main-content" }} className={css({ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" })}>
+        <EclipseHero />
+        <CapabilitiesGrid />
+        <ProtocolSection />
+        <ManifestoSection />
+        <ContactSection />
       </main>
-
-      <Footer />
     </div>
   );
 }

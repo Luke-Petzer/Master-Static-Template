@@ -9,10 +9,12 @@ interface TypographyProps {
 
 export const Heading = ({ children, className, as: Component = "h1" }: TypographyProps) => {
     const styles = css({
-        fontFamily: "var(--font-outfit)",
-        fontWeight: "bold",
+        fontFamily: "var(--font-michroma)",
+        fontWeight: "normal",
         lineHeight: "tight",
         color: "text.primary",
+        letterSpacing: "widest",
+        textTransform: "uppercase",
         fontSize: {
             base: "xl",
             h1: "2xl",
@@ -29,11 +31,25 @@ export const Heading = ({ children, className, as: Component = "h1" }: Typograph
 
 export const Text = ({ children, className, as: Component = "p" }: TypographyProps) => {
     const styles = css({
-        fontFamily: "var(--font-inter)",
+        fontFamily: "var(--font-rajdhani)",
         fontWeight: "normal",
         lineHeight: "relaxed",
         color: "text.secondary",
         fontSize: "base",
+    });
+
+    return <Component className={cx(styles, className)}>{children}</Component>;
+};
+
+export const Code = ({ children, className, as: Component = "span" }: TypographyProps) => {
+    const styles = css({
+        fontFamily: "var(--font-jetbrains)",
+        fontWeight: "400",
+        lineHeight: "relaxed",
+        color: "accent.DEFAULT",
+        fontSize: "xs",
+        letterSpacing: "widest",
+        textTransform: "uppercase",
     });
 
     return <Component className={cx(styles, className)}>{children}</Component>;

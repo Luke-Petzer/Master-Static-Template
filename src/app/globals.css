@@ -2,12 +2,10 @@
 
 @layer base {
   :root {
-    /* Brand Design Tokens for 15-Minute Re-skinning */
-    --brand-black: #121212;
-    --brand-black-deep: #080808;
-    --brand-gold: #FFD700;
-    --brand-white: #FFFFFF;
-    --brand-gray: #AAAAAA;
+    /* Eclipse Logic Theme Tokens */
+    --accent: #FF4500;
+    --bg-dark: #050505;
+    --bg-black: #000000;
 
     /* Spacing Scale (8px Grid) */
     --spacing-base: 8px;
@@ -19,18 +17,20 @@
   }
 
   body {
-    background: radial-gradient(circle at 50% 50%, var(--brand-black) 0%, var(--brand-black-deep) 100%);
-    color: var(--brand-white);
-    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-black);
+    color: white;
+    font-family: var(--font-rajdhani), sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
+    cursor: crosshair;
   }
 
-  /* Tactile SVG Noise Filter */
+  /* Scanlines Overlay Effect */
   body::before {
     content: "";
     position: fixed;
@@ -38,10 +38,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.05;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+    background-size: 100% 4px;
     pointer-events: none;
-    z-index: 9999;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 50;
+    opacity: 0.15;
   }
 
   h1,
@@ -50,10 +51,154 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-outfit), sans-serif;
+    font-family: var(--font-michroma), sans-serif;
   }
 
   * {
     box-sizing: border-box;
+  }
+
+  /* Custom Selection */
+  ::selection {
+    background: var(--accent);
+    color: black;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+
+  /* Keyframe Animations */
+  @keyframes pulse-core {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 1;
+      box-shadow: 0 0 40px var(--accent), 0 0 10px var(--accent);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+      box-shadow: 0 0 20px var(--accent);
+    }
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes glitch-anim {
+    0% {
+      transform: translate(0)
+    }
+
+    20% {
+      transform: translate(-2px, 2px)
+    }
+
+    40% {
+      transform: translate(-2px, -2px)
+    }
+
+    60% {
+      transform: translate(2px, 2px)
+    }
+
+    80% {
+      transform: translate(2px, -2px)
+    }
+
+    100% {
+      transform: translate(0)
+    }
+  }
+
+  @keyframes crt-off {
+    0% {
+      transform: scale(1, 1);
+      filter: brightness(1);
+    }
+
+    40% {
+      transform: scale(1, 0.002);
+      filter: brightness(5);
+    }
+
+    80% {
+      transform: scale(0, 0.002);
+      filter: brightness(5);
+    }
+
+    100% {
+      transform: scale(0, 0);
+      filter: brightness(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Utility Classes */
+  .animate-pulse-core {
+    animation: pulse-core 3s infinite ease-in-out;
+  }
+
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .glitch-hover:hover {
+    animation: glitch-anim 0.3s infinite;
+    color: var(--accent);
+  }
+
+  .crt-shutdown {
+    animation: crt-off 0.8s forwards ease-in-out;
+  }
+
+  /* Reveal Up Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease-out;
+  }
+
+  .reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

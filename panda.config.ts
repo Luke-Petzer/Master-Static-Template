@@ -16,10 +16,13 @@ export default defineConfig({
       tokens: {
         colors: {
           brand: {
-            black: { value: "#121212" },
-            gold: { value: "#FFD700" },
+            // Eclipse Logic Theme Colors
+            "eclipse-red": { value: "#FF4500" },
+            "pitch-black": { value: "#000000" },
+            "dark-gray": { value: "#050505" },
             white: { value: "#FFFFFF" },
             gray: { value: "#AAAAAA" },
+            "gray-dark": { value: "#333333" },
           },
         },
         spacing: {
@@ -31,28 +34,36 @@ export default defineConfig({
           "grandeur": { value: "64px" },
           "hairline": { value: "4px" },
         },
+        fonts: {
+          tech: { value: "var(--font-michroma), sans-serif" },
+          mono: { value: "var(--font-jetbrains), monospace" },
+          body: { value: "var(--font-rajdhani), sans-serif" },
+        },
       },
       semanticTokens: {
         colors: {
-          bg: { value: "{colors.brand.black}" },
+          bg: { value: "{colors.brand.pitch-black}" },
+          "bg-elevated": { value: "{colors.brand.dark-gray}" },
           text: {
             primary: { value: "{colors.brand.white}" },
             secondary: { value: "{colors.brand.gray}" },
+            tertiary: { value: "{colors.brand.gray-dark}" },
           },
           accent: {
-            DEFAULT: { value: "{colors.brand.gold}" },
-            glow: { value: "rgba(255, 215, 0, 0.3)" },
-            high: { value: "rgba(255, 215, 0, 0.6)" },
+            DEFAULT: { value: "{colors.brand.eclipse-red}" },
+            glow: { value: "rgba(255, 69, 0, 0.3)" },
+            high: { value: "rgba(255, 69, 0, 0.7)" },
           },
           glass: {
             bg: { value: "rgba(255, 255, 255, 0.03)" },
-            border: { value: "rgba(255, 255, 255, 0.08)" },
-            glow: { value: "rgba(255, 215, 0, 0.15)" },
+            border: { value: "rgba(255, 255, 255, 0.1)" },
+            borderDim: { value: "rgba(255, 255, 255, 0.05)" },
           }
         },
         shadows: {
-          goldGlow: { value: "0 0 20px {colors.accent.glow}" },
-          goldGlowStrong: { value: "0 0 40px {colors.accent.high}" },
+          eclipseGlow: { value: "0 0 15px {colors.accent.DEFAULT}, inset 0 0 10px {colors.accent.glow}" },
+          eclipseGlowSm: { value: "0 0 8px {colors.accent.DEFAULT}" },
+          eclipseGlowText: { value: "0 0 10px {colors.accent.high}" },
         },
         blurs: {
           glass: { value: "16px" },

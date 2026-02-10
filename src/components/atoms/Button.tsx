@@ -25,10 +25,11 @@ export const Button = ({
         justifyContent: "center",
         fontWeight: "bold",
         cursor: "pointer",
-        transition: "border-color 0.2s ease-in-out",
-        fontFamily: "var(--font-outfit)",
+        transition: "all 0.3s ease-in-out",
+        fontFamily: "var(--font-jetbrains)",
         textTransform: "uppercase",
-        letterSpacing: "wider",
+        letterSpacing: "0.2em",
+        fontSize: "xs",
 
         // Size-based heights (multiples of 8)
         height: {
@@ -38,9 +39,9 @@ export const Button = ({
         }[size],
 
         paddingX: {
-            sm: "component",
-            md: "sectional",
-            lg: "atmospheric",
+            sm: "sectional",
+            md: "atmospheric",
+            lg: "structural",
         }[size],
 
         // Variants
@@ -61,14 +62,15 @@ export const Button = ({
 
         _hover: {
             opacity: 1,
-            bg: variant === "primary" ? "accent.DEFAULT" : "rgba(255, 215, 0, 0.1)",
-            color: variant === "outline" ? "accent.DEFAULT" : undefined,
+            bg: variant === "primary" ? "accent.DEFAULT" : "rgba(255, 69, 0, 0.1)",
+            color: variant === "outline" ? "accent.DEFAULT" : variant === "primary" ? "bg" : undefined,
             borderColor: "accent.DEFAULT",
-            boxShadow: "goldGlow",
+            boxShadow: variant === "outline" ? "eclipseGlow" : undefined,
+            transform: "scale(1.05)",
         },
 
         _active: {
-            boxShadow: "goldGlowStrong",
+            transform: "scale(0.98)",
         }
     });
 

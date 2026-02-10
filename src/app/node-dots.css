@@ -1,0 +1,12 @@
+/**
+ * Global CSS rules for node dots animation
+ */
+
+.node-dot {
+    position: absolute;
+    background: #FF4500;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    pointer-events: none;
+}
