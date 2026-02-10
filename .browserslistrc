@@ -1,0 +1,7 @@
+# Browsers that we support
+# This removes legacy JavaScript polyfills for modern browser features
+
+# Modern browsers only (removes 13.7 KiB of polyfills)
+defaults and fully supports es6-module
+not IE 11
+not op_mini all

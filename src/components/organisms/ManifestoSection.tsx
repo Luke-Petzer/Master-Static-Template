@@ -17,7 +17,7 @@ export const ManifestoSection = () => {
         position: "absolute",
         inset: 0,
         zIndex: 0,
-        backgroundImage: "url('https://images.unsplash.com/photo-1494587416117-f10426b7044f?q=80&w=2070&auto=format&fit=crop')",
+        backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2070&auto=format&fit=crop')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         opacity: 0.2,

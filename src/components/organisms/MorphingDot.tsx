@@ -31,11 +31,12 @@ export const MorphingDot = () => {
     const dotStyles = css({
         position: "fixed",
         left: "50%",
-        transform: "translate(-50%, -50%)",
+        transform: "translate(-50%, -50%) translateZ(0)",
         bg: "accent.DEFAULT",
         zIndex: 30,
         pointerEvents: "none",
         transition: "box-shadow 0.3s ease-in-out",
+        willChange: "transform, width, height, border-radius",
     });
 
     return (
